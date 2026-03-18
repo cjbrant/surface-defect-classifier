@@ -26,7 +26,7 @@ I used a public steel defect dataset (NEU-DET) as a stand-in for our proprietary
 
 ## The bigger picture
 
-The classifier is the easy part. The real value is in what you do with the classification data; connecting defect types to process conditions, costs, and trends over time. The Power BI dashboard demonstrates how classification outputs can feed into operational decision-making: which defects are most expensive, where on the roll they occur, and what process changes correlate with defect rate changes.
+The classifier is the easy part. The real value is in what you do with the classification data; connecting defect types to process conditions, costs, and trends over time. The Power BI dashboard (in /reports) demonstrates how classification outputs can feed into operational decision-making: which defects are most expensive, where on the roll they occur, and what process changes correlate with defect rate changes.
 
 ## How to run
 
