@@ -4,7 +4,7 @@ Steel surface defect classification with a manufacturing analytics dashboard for
 
 ## What this is
 
-At my plant, we have an inline vision system that detects defects on film and draws bounding boxes around them. It alarms when defects are too large, but it doesn't tell us *what* the defect was — just that something was there. Knowing the defect type matters because different defects have different root causes and different costs.
+At my workplace (films manufacturing), we have an inline vision system that detects defects on film and draws bounding boxes around them. It alarms when defects are too large, but it doesn't tell us *what* the defect was; just that something was there. Knowing the defect type matters because different defects have different root causes and different costs.
 
 I built this as a proof of concept to show plant leadership how image classification could work alongside our existing alarm system. The classifier identifies what type of defect is in each image, and the analytics dashboard shows patterns in defect types, estimated costs, location on the roll, and how defects affect KPIs.
 
@@ -26,7 +26,7 @@ I used a public steel defect dataset (NEU-DET) as a stand-in for our proprietary
 
 ## The bigger picture
 
-The classifier is the easy part. The real value is in what you do with the classification data — connecting defect types to process conditions, costs, and trends over time. The Power BI dashboard demonstrates how classification outputs can feed into operational decision-making: which defects are most expensive, where on the roll they occur, and what process changes correlate with defect rate changes.
+The classifier is the easy part. The real value is in what you do with the classification data; connecting defect types to process conditions, costs, and trends over time. The Power BI dashboard demonstrates how classification outputs can feed into operational decision-making: which defects are most expensive, where on the roll they occur, and what process changes correlate with defect rate changes.
 
 ## How to run
 
