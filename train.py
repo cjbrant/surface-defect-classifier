@@ -293,7 +293,7 @@ def main():
     opt  = torch.optim.AdamW(model.parameters(), lr=LR)
     sched = torch.optim.lr_scheduler.ReduceLROnPlateau(opt, factor=0.5, patience=2)
 
-    scaler = torch.cuda.amp.GradScaler(enabled=(DEVICE == "cuda"))
+    scaler = torch.amp.GradScaler("cuda", enabled=(DEVICE == "cuda"))
 
     def run_epoch(dl, training=False):
         model.train(training)
@@ -303,7 +303,7 @@ def main():
             x, y = x.to(DEVICE, non_blocking=True), y.to(DEVICE, non_blocking=True)
             if training:
                 opt.zero_grad(set_to_none=True)
-                with torch.cuda.amp.autocast(enabled=(DEVICE == "cuda")):
+                with torch.amp.autocast("cuda", enabled=(DEVICE == "cuda")):
                     out = model(x)
                     loss = crit(out, y)
                 scaler.scale(loss).backward()
