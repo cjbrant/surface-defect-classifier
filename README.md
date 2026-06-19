@@ -1,156 +1,55 @@
 # Surface Defect Classifier
 
-Computer-vision pipeline for chip-level classification of steel surface defects from the
-**NEU-DET** benchmark, paired with an **interactive Ignition Perspective dashboard** driven by
-**MySQL**. The workflow parses Pascal VOC annotations, crops defect regions, fine-tunes image
-classifiers (**ResNet-18** and **ViT-B/16**), exports structured evaluation artifacts, loads them
-into a MySQL star schema, and serves a live seven-view inspection dashboard.
+Steel surface defect classification with an interactive Ignition Perspective dashboard for defect pattern analysis.
 
----
+## What this is
 
-## The Dashboard
+At my workplace (films manufacturing), we have an inline vision system that detects defects on film and draws bounding boxes around them. It alarms when defects are too large, but it doesn't tell us *what* the defect was, just that something was there. Knowing the defect type matters because different defects have different root causes and different costs.
 
-A seven-view, multi-page Perspective application, **live from MySQL** — model quality, plant
-operations, model comparison, defect localization, a replayed real-time feed, a filterable
-prediction explorer, and the actual misclassified chip images.
+I built this as a proof of concept to show plant leadership how image classification could work alongside our existing alarm system. The classifier identifies what type of defect is in each image, and the dashboard shows patterns in defect types, estimated costs, location on the roll, and how defects affect KPIs.
 
-### Model Quality
-Accuracy / F1 KPI tiles and per-class precision/recall/F1, straight from the database.
+I used a public steel defect dataset (NEU-DET) as a stand-in for our proprietary film data to demonstrate the concept.
 
-![Model Quality](docs/screenshots/01-model-quality.png)
+## What it does
 
-### Operations
-Per-machine defect counts and cost, a predicted-class **Pareto bar chart**, and defect volume by
-day — the MES-style view a line supervisor would watch.
+Classification pipeline:
+- Parses Pascal VOC annotations from the NEU-DET dataset
+- Crops defect regions into individual chips for classification
+- Fine-tunes image classifiers (ResNet-18 and ViT-B/16) on 6 defect classes (crazing, inclusion, patches, pitted surface, rolled-in scale, scratches)
+- Exports predictions, confusion matrices, and per-class performance reports
 
-![Operations](docs/screenshots/02-operations.png)
+Results:
+- ResNet-18 reaches 97.89% validation accuracy on 854 chips (0.979 macro F1)
+- ViT-B/16 reaches 76.58%. It is data-hungry and underfits a set this small, which is a legitimate result to report
+- Scratches classify perfectly (F1 = 1.0)
+- The main confusion is pitted surface against rolled-in scale, since the two are texturally similar
 
-### Model Comparison
-ResNet-18 vs ViT-B/16 as **grouped horizontal bars** per class — the ViT shortfall (Pitted Surface
-0.57 vs 0.97) is instantly readable — over the live overall-metrics table.
+## The dashboard
 
-![Model Comparison](docs/screenshots/03-model-comparison.png)
+The classifier is the easy part. The real value is in what you do with the classification data, connecting defect types to process conditions, costs, and trends over time. I built an interactive Ignition Perspective dashboard (backed by MySQL) to do this. It is a seven-view application showing model quality, plant operations, a model comparison, where defects land on the strip, a live inspection feed, a prediction explorer, and the chips the model got wrong.
 
-### Defect Map
-A **10×10 density heatmap** of where defects land on the strip — each defect's bounding-box center
-binned by web (across) × roll (along). The center carries the load; the edges stay clean.
+The dashboard, its screenshots, and importable Ignition artifacts (project, gateway backup, MySQL dump) are in [`ignition_dashboard/`](ignition_dashboard/).
 
-![Defect Map](docs/screenshots/04-defect-map.png)
-
-### Live Inspection
-A replayed real-time defect feed (polls every 2s) with running per-class counts and critical-rate.
-
-![Live Inspection](docs/screenshots/05-live-inspection.png)
-
-### Prediction Explorer
-All 854 validation predictions, sortable and filterable.
-
-![Prediction Explorer](docs/screenshots/06-prediction-explorer.png)
-
-### Chip Viewer
-The actual chips ResNet-18 got wrong, highest-confidence mistakes first — the failure cases you'd
-take to a model review.
-
-![Chip Viewer](docs/screenshots/07-chip-viewer.png)
-
-> **Want to run it yourself?** The dashboard ships as importable Ignition artifacts (project `.zip`,
-> a full gateway `.gwbk`, and a MySQL dump) under [`ignition_dashboard/exports/`](ignition_dashboard/exports/).
-> Step-by-step import instructions: **[`ignition_dashboard/IMPORT.md`](ignition_dashboard/IMPORT.md)**.
-
----
-
-## Models & Results
-
-Both models were fine-tuned on ~3,300 train chips and evaluated on **854** validation chips.
-
-| Metric | ResNet-18 | ViT-B/16 |
-| --- | ---: | ---: |
-| Accuracy | **0.9789** | 0.7658 |
-| Macro F1 | **0.9785** | 0.7431 |
-| Weighted F1 | **0.9789** | 0.7647 |
-
-ResNet-18 wins decisively. ViT-B/16 is data-hungry and underfits a dataset this small — a
-legitimate, reportable finding rather than a failure.
-
-ResNet-18 per-class:
-
-| Class | Precision | Recall | F1 | Support |
-| --- | ---: | ---: | ---: | ---: |
-| Crazing | 0.964 | 1.000 | 0.982 | 162 |
-| Inclusion | 0.981 | 0.969 | 0.975 | 159 |
-| Patches | 0.984 | 0.974 | 0.979 | 193 |
-| Pitted Surface | 0.945 | 0.989 | 0.966 | 87 |
-| Rolled-in Scale | 0.992 | 0.947 | 0.969 | 132 |
-| Scratches | 1.000 | 1.000 | 1.000 | 121 |
-
-The residual weakness is a small **pitted-surface ↔ rolled-in-scale** confusion (texturally
-similar) — visible as the top mistake in the Chip Viewer above (`Pitted Surface → Rolled-in Scale`,
-confidence 0.99).
-
----
-
-## Architecture
-
-```text
- NEU-DET images + VOC XML
-            |
-            v
-        train.py  --model {resnet18, vit_b_16}
-            |
-   chip extraction + fine-tuning
-            |
-            v
-   results/<model>/  (predictions, confusion, class report)
-            |
-            v
-   ignition_dashboard/etl/load_mysql.py  ──►  MySQL star schema
-            |                                  (+ synthetic ops: machine/operator/shift/cost/position)
-            v
-   Ignition Perspective  ◄── named queries ──  MySQL
-   (7 live views)
-            ^
-            └── cropped chip PNGs served statically to the Chip Viewer
-```
-
-The repo ships the dashboard as **exported artifacts**, not a running service — see
-[`ignition_dashboard/`](ignition_dashboard/):
-
-```
-ignition_dashboard/
-  exports/                 # importable deliverables
-    surface_defect_project.zip      # Perspective project (views + named queries)
-    surface_defect_gateway.gwbk     # full gateway backup (project + DB connection)
-    surfaceDefect.sql               # mysqldump: schema + data
-  ignition/projects/...    # version-controlled project source
-  mysql/01_schema.sql      # star schema
-  etl/                     # load_mysql.py · enrich.py · replay.py
-  IMPORT.md                # how to stand it up on your own gateway
-```
-
----
-
-## Training (reproducibility)
+## How to run
 
 ```bash
-python -m venv .venv && source .venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 
-python train.py --model resnet18 --rebuild-chips   # build chips + train ResNet-18
-python train.py --model vit_b_16                    # train ViT-B/16 (reuses chips)
+# Train the classifier (the NEU-DET dataset is included in NEU-DET/)
+python train.py --model resnet18 --rebuild-chips
+
+# Results are written to results/
 ```
 
-`train.py` auto-selects the device (`cuda → mps → cpu`). Outputs land in `results/<model>/`
-(per-model) and `results/chips/` + `results/*_chips_index.csv` (shared).
+## Tech stack
 
-The six NEU-DET classes: Crazing, Inclusion, Patches, Pitted Surface, Rolled-in Scale, Scratches.
+Python, PyTorch, torchvision (ResNet-18 and ViT-B/16 fine-tuning), PIL, pandas, scikit-learn. Dashboard built in Ignition Perspective on MySQL.
 
----
+## Structure
 
-## Limitations
-
-- ViT-B/16 underperforms on this small dataset; a larger corpus would change the comparison.
-- The factory-operations layer (machine, operator, shift, cost, timeline, strip position) in the
-  dashboard is **synthetic** — deterministically generated to demonstrate an MES-style inspection
-  view, not real plant data.
-- The benchmark may not represent plant-specific lighting, coating, or imaging conditions.
-- Localization is treated as preprocessing, not a jointly learned detection task.
+- `train.py` runs the end-to-end training pipeline (chip extraction, augmentation, training, evaluation)
+- `NEU-DET/` holds the dataset (train/validation split with images and annotations)
+- `results/` holds predictions, confusion matrices, and class reports
+- `ignition_dashboard/` holds the Ignition Perspective dashboard (project source, exports, ETL, screenshots)
