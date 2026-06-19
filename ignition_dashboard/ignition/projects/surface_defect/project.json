@@ -1,0 +1,6 @@
+{
+  "title": "Surface Defect Classifier",
+  "description": "ResNet-18 vs ViT-B/16 steel surface-defect inspection dashboard",
+  "enabled": true,
+  "inheritable": false
+}

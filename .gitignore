@@ -1,0 +1,18 @@
+# OS / editor / tooling junk
+.DS_Store
+**/.DS_Store
+__pycache__/
+**/__pycache__/
+.playwright-mcp/
+
+# python virtualenvs
+.venv/
+**/.venv/
+
+# large / regenerable model artifacts (rebuild via train.py)
+results/chips/
+results/**/models/*.pt
+
+# superseded Power BI artifacts (the Ignition dashboard replaces these)
+dashboard.pbix
+dashboard.pdf

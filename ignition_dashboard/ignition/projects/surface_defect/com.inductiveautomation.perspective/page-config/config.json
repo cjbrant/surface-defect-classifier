@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "/": { "viewPath": "Home", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } },
+    "/operations": { "viewPath": "Operations", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } },
+    "/comparison": { "viewPath": "ModelComparison", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } },
+    "/defect-map": { "viewPath": "DefectMap", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } },
+    "/live": { "viewPath": "LiveInspection", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } },
+    "/explorer": { "viewPath": "Explorer", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } },
+    "/chips": { "viewPath": "ChipViewer", "docks": { "top": [ { "anchor": "fixed", "autoBreakpoint": 480, "content": "push", "handle": "hide", "iconUrl": "", "id": "nav", "modal": false, "resizable": false, "show": "visible", "size": 48, "viewParams": {}, "viewPath": "Nav" } ] } }
+  }
+}

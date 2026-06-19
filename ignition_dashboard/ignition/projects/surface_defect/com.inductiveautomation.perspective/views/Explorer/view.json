@@ -1,0 +1,22 @@
+{
+  "custom": {},
+  "params": {},
+  "props": { "defaultSize": { "width": 1280, "height": 760 } },
+  "root": {
+    "type": "ia.container.coord",
+    "version": 0,
+    "props": { "style": { "backgroundColor": "#EEF2F7" } },
+    "meta": { "name": "root" },
+    "children": [
+      { "type": "ia.display.label", "version": 0, "props": { "text": "Prediction Explorer  ·  854 validation chips (sort & filter columns)", "style": { "color": "#0B1E3F", "fontSize": 20, "fontWeight": 700, "paddingLeft": 28, "display": "flex", "alignItems": "center" } }, "meta": { "name": "title" }, "position": { "x": 0, "y": 12, "width": 1000, "height": 32 } },
+      {
+        "type": "ia.display.table",
+        "version": 0,
+        "props": { "data": [], "filter": { "enabled": true }, "rowHeight": 32, "pager": { "enabled": true } },
+        "propConfig": { "props.data": { "binding": { "type": "query", "config": { "queryPath": "ExplorerAll", "polling": { "enabled": false } } } } },
+        "meta": { "name": "explorerTable" },
+        "position": { "x": 28, "y": 56, "width": 1208, "height": 660 }
+      }
+    ]
+  }
+}

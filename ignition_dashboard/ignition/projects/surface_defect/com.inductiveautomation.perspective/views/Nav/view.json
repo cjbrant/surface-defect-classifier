@@ -1,0 +1,25 @@
+{
+  "custom": {},
+  "params": {},
+  "props": { "defaultSize": { "width": 1280, "height": 48 } },
+  "root": {
+    "type": "ia.container.flex",
+    "version": 0,
+    "props": {
+      "direction": "row",
+      "alignItems": "center",
+      "style": { "backgroundColor": "#0B1E3F", "paddingLeft": 12, "paddingRight": 12, "gap": "4px" }
+    },
+    "meta": { "name": "root" },
+    "children": [
+      { "type": "ia.display.label", "version": 0, "props": { "text": "SDC", "style": { "color": "#FFFFFF", "fontWeight": 800, "fontSize": 16, "paddingRight": 16 } }, "meta": { "name": "brand" }, "position": { "shrink": 0, "basis": "48px" } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Model Quality", "url": "/", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l1" }, "position": { "shrink": 0 } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Operations", "url": "/operations", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l2" }, "position": { "shrink": 0 } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Model Comparison", "url": "/comparison", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l3" }, "position": { "shrink": 0 } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Defect Map", "url": "/defect-map", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l4" }, "position": { "shrink": 0 } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Live Inspection", "url": "/live", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l5" }, "position": { "shrink": 0 } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Prediction Explorer", "url": "/explorer", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l6" }, "position": { "shrink": 0 } },
+      { "type": "ia.navigation.link", "version": 0, "props": { "text": "Chip Viewer", "url": "/chips", "target": "self", "style": { "color": "#CBD5E1", "textDecoration": "none", "padding": "8px 12px", "fontWeight": 600 } }, "meta": { "name": "l7" }, "position": { "shrink": 0 } }
+    ]
+  }
+}

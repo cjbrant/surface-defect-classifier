@@ -1,0 +1,21 @@
+{
+  "custom": {},
+  "params": {},
+  "props": { "defaultSize": { "width": 1280, "height": 760 } },
+  "root": {
+    "type": "ia.container.coord",
+    "version": 0,
+    "props": { "style": { "backgroundColor": "#EEF2F7" } },
+    "meta": { "name": "root" },
+    "children": [
+      { "type": "ia.display.label", "version": 0, "props": { "text": "Live Inspection  ·  replayed defect feed", "style": { "color": "#0B1E3F", "fontSize": 20, "fontWeight": 700, "paddingLeft": 28, "display": "flex", "alignItems": "center" } }, "meta": { "name": "title" }, "position": { "x": 0, "y": 12, "width": 1000, "height": 32 } },
+      { "type": "ia.display.label", "version": 0, "props": { "text": "Run  etl/replay.py  to stream chips into the line. Tables poll every 2s.", "style": { "color": "#475569", "fontSize": 13, "paddingLeft": 28 } }, "meta": { "name": "note" }, "position": { "x": 0, "y": 46, "width": 1100, "height": 22 } },
+
+      { "type": "ia.display.label", "version": 0, "props": { "text": "Live Feed (most recent 20)", "style": { "color": "#334155", "fontSize": 14, "fontWeight": 600 } }, "meta": { "name": "h1" }, "position": { "x": 28, "y": 84, "width": 400, "height": 22 } },
+      { "type": "ia.display.table", "version": 0, "props": { "data": [] }, "propConfig": { "props.data": { "binding": { "type": "query", "config": { "queryPath": "LiveFeed", "polling": { "enabled": true, "rate": "2000" } } } } }, "meta": { "name": "feedTable" }, "position": { "x": 28, "y": 108, "width": 820, "height": 590 } },
+
+      { "type": "ia.display.label", "version": 0, "props": { "text": "Running Counts", "style": { "color": "#334155", "fontSize": 14, "fontWeight": 600 } }, "meta": { "name": "h2" }, "position": { "x": 872, "y": 84, "width": 400, "height": 22 } },
+      { "type": "ia.display.table", "version": 0, "props": { "data": [] }, "propConfig": { "props.data": { "binding": { "type": "query", "config": { "queryPath": "LiveCounts", "polling": { "enabled": true, "rate": "2000" } } } } }, "meta": { "name": "countsTable" }, "position": { "x": 872, "y": 108, "width": 364, "height": 590 } }
+    ]
+  }
+}

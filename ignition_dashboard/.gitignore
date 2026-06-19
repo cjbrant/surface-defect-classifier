@@ -1,0 +1,10 @@
+# python venv + caches
+etl/.venv/
+**/__pycache__/
+
+# gateway-generated caches inside the project source dir
+ignition/projects/.resources/
+ignition/projects/conversion-report.txt
+
+# dev-only reference copy of the Ignition Quick Start project
+ignition/_reference_quickstart/

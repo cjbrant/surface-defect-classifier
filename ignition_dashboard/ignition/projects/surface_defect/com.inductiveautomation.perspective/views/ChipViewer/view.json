@@ -1,0 +1,354 @@
+{
+ "custom": {},
+ "params": {},
+ "props": {
+  "defaultSize": {
+   "width": 1280,
+   "height": 960
+  }
+ },
+ "root": {
+  "type": "ia.container.coord",
+  "version": 0,
+  "props": {
+   "style": {
+    "backgroundColor": "#EEF2F7"
+   }
+  },
+  "meta": {
+   "name": "root"
+  },
+  "children": [
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Chip Viewer  \u00b7  failure cases (ResNet-18)",
+     "style": {
+      "color": "#0B1E3F",
+      "fontSize": 20,
+      "fontWeight": 700,
+      "paddingLeft": 28,
+      "display": "flex",
+      "alignItems": "center"
+     }
+    },
+    "meta": {
+     "name": "title"
+    },
+    "position": {
+     "x": 0,
+     "y": 12,
+     "width": 1000,
+     "height": 32
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "The 18 chips ResNet-18 got wrong, highest-confidence mistakes first. Cropped defect images served live from nginx.",
+     "style": {
+      "color": "#475569",
+      "fontSize": 13,
+      "paddingLeft": 28
+     }
+    },
+    "meta": {
+     "name": "note"
+    },
+    "position": {
+     "x": 0,
+     "y": 46,
+     "width": 1180,
+     "height": 22
+    }
+   },
+   {
+    "type": "ia.display.image",
+    "version": 0,
+    "props": {
+     "source": "http://localhost:8090/chips/validation/pitted_surface/pitted_surface_266_bb01.png",
+     "fit": {
+      "mode": "cover"
+     },
+     "style": {
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#CBD5E1",
+      "borderRadius": 6
+     }
+    },
+    "meta": {
+     "name": "img1"
+    },
+    "position": {
+     "x": 28,
+     "y": 80,
+     "width": 168,
+     "height": 126
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Pitted Surface \u2192 Rolled-in Scale  (0.99)",
+     "style": {
+      "color": "#B91C1C",
+      "fontSize": 12,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "cap1"
+    },
+    "position": {
+     "x": 12,
+     "y": 210,
+     "width": 200,
+     "height": 32
+    }
+   },
+   {
+    "type": "ia.display.image",
+    "version": 0,
+    "props": {
+     "source": "http://localhost:8090/chips/validation/inclusion/inclusion_296_bb00.png",
+     "fit": {
+      "mode": "cover"
+     },
+     "style": {
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#CBD5E1",
+      "borderRadius": 6
+     }
+    },
+    "meta": {
+     "name": "img2"
+    },
+    "position": {
+     "x": 236,
+     "y": 80,
+     "width": 168,
+     "height": 126
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Inclusion \u2192 Pitted Surface  (0.98)",
+     "style": {
+      "color": "#B91C1C",
+      "fontSize": 12,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "cap2"
+    },
+    "position": {
+     "x": 220,
+     "y": 210,
+     "width": 200,
+     "height": 32
+    }
+   },
+   {
+    "type": "ia.display.image",
+    "version": 0,
+    "props": {
+     "source": "http://localhost:8090/chips/validation/patches/pitted_surface_279_bb02.png",
+     "fit": {
+      "mode": "cover"
+     },
+     "style": {
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#CBD5E1",
+      "borderRadius": 6
+     }
+    },
+    "meta": {
+     "name": "img3"
+    },
+    "position": {
+     "x": 444,
+     "y": 80,
+     "width": 168,
+     "height": 126
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Patches \u2192 Inclusion  (0.94)",
+     "style": {
+      "color": "#B91C1C",
+      "fontSize": 12,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "cap3"
+    },
+    "position": {
+     "x": 428,
+     "y": 210,
+     "width": 200,
+     "height": 32
+    }
+   },
+   {
+    "type": "ia.display.image",
+    "version": 0,
+    "props": {
+     "source": "http://localhost:8090/chips/validation/rolled-in_scale/rolled-in_scale_285_bb00.png",
+     "fit": {
+      "mode": "cover"
+     },
+     "style": {
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#CBD5E1",
+      "borderRadius": 6
+     }
+    },
+    "meta": {
+     "name": "img4"
+    },
+    "position": {
+     "x": 652,
+     "y": 80,
+     "width": 168,
+     "height": 126
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Rolled-in Scale \u2192 Crazing  (0.94)",
+     "style": {
+      "color": "#B91C1C",
+      "fontSize": 12,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "cap4"
+    },
+    "position": {
+     "x": 636,
+     "y": 210,
+     "width": 200,
+     "height": 32
+    }
+   },
+   {
+    "type": "ia.display.image",
+    "version": 0,
+    "props": {
+     "source": "http://localhost:8090/chips/validation/inclusion/scratches_242_bb02.png",
+     "fit": {
+      "mode": "cover"
+     },
+     "style": {
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#CBD5E1",
+      "borderRadius": 6
+     }
+    },
+    "meta": {
+     "name": "img5"
+    },
+    "position": {
+     "x": 860,
+     "y": 80,
+     "width": 168,
+     "height": 126
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Inclusion \u2192 Patches  (0.84)",
+     "style": {
+      "color": "#B91C1C",
+      "fontSize": 12,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "cap5"
+    },
+    "position": {
+     "x": 844,
+     "y": 210,
+     "width": 200,
+     "height": 32
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "All Misclassifications",
+     "style": {
+      "color": "#334155",
+      "fontSize": 14,
+      "fontWeight": 600
+     }
+    },
+    "meta": {
+     "name": "h2"
+    },
+    "position": {
+     "x": 28,
+     "y": 260,
+     "width": 400,
+     "height": 22
+    }
+   },
+   {
+    "type": "ia.display.table",
+    "version": 0,
+    "props": {
+     "data": []
+    },
+    "propConfig": {
+     "props.data": {
+      "binding": {
+       "type": "query",
+       "config": {
+        "queryPath": "MisclassifiedChips",
+        "polling": {
+         "enabled": false
+        }
+       }
+      }
+     }
+    },
+    "meta": {
+     "name": "missTable"
+    },
+    "position": {
+     "x": 28,
+     "y": 284,
+     "width": 940,
+     "height": 660
+    }
+   }
+  ]
+ }
+}

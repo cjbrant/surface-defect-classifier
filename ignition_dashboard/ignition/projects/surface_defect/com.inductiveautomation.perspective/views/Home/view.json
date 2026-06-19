@@ -1,0 +1,403 @@
+{
+ "custom": {},
+ "params": {},
+ "props": {
+  "defaultSize": {
+   "width": 1280,
+   "height": 760
+  }
+ },
+ "root": {
+  "type": "ia.container.coord",
+  "version": 0,
+  "props": {
+   "style": {
+    "backgroundColor": "#EEF2F7"
+   }
+  },
+  "meta": {
+   "name": "root"
+  },
+  "children": [
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Surface Defect Classifier  \u00b7  Model Quality",
+     "style": {
+      "color": "#0B1E3F",
+      "fontSize": 22,
+      "fontWeight": 700,
+      "paddingLeft": 28,
+      "display": "flex",
+      "alignItems": "center"
+     }
+    },
+    "meta": {
+     "name": "headerBar"
+    },
+    "position": {
+     "x": 0,
+     "y": 0,
+     "width": 1280,
+     "height": 64
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "ResNet-18  \u00b7  NEU-DET steel surface defects  \u00b7  live from MySQL",
+     "style": {
+      "color": "#475569",
+      "fontSize": 14,
+      "fontWeight": 500,
+      "paddingLeft": 28,
+      "display": "flex",
+      "alignItems": "center"
+     }
+    },
+    "meta": {
+     "name": "subtitle"
+    },
+    "position": {
+     "x": 0,
+     "y": 72,
+     "width": 900,
+     "height": 24
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "\u2014",
+     "style": {
+      "backgroundColor": "#FFFFFF",
+      "color": "#0B1E3F",
+      "fontSize": 34,
+      "fontWeight": 700,
+      "borderRadius": 8,
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#D7DEE8",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center"
+     }
+    },
+    "propConfig": {
+     "props.text": {
+      "binding": {
+       "type": "query",
+       "config": {
+        "queryPath": "KpiAccuracy",
+        "polling": {
+         "enabled": false
+        }
+       },
+       "transforms": [
+        {
+         "code": "\treturn value.getValueAt(0, 0)",
+         "type": "script"
+        }
+       ]
+      }
+     }
+    },
+    "meta": {
+     "name": "kpiAccVal"
+    },
+    "position": {
+     "x": 28,
+     "y": 110,
+     "width": 286,
+     "height": 84
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Accuracy",
+     "style": {
+      "color": "#64748B",
+      "fontSize": 13,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "kpiAccCap"
+    },
+    "position": {
+     "x": 28,
+     "y": 198,
+     "width": 286,
+     "height": 18
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "\u2014",
+     "style": {
+      "backgroundColor": "#FFFFFF",
+      "color": "#0B1E3F",
+      "fontSize": 34,
+      "fontWeight": 700,
+      "borderRadius": 8,
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#D7DEE8",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center"
+     }
+    },
+    "propConfig": {
+     "props.text": {
+      "binding": {
+       "type": "query",
+       "config": {
+        "queryPath": "KpiMacroF1",
+        "polling": {
+         "enabled": false
+        }
+       },
+       "transforms": [
+        {
+         "code": "\treturn value.getValueAt(0, 0)",
+         "type": "script"
+        }
+       ]
+      }
+     }
+    },
+    "meta": {
+     "name": "kpiMacroVal"
+    },
+    "position": {
+     "x": 334,
+     "y": 110,
+     "width": 286,
+     "height": 84
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Macro F1",
+     "style": {
+      "color": "#64748B",
+      "fontSize": 13,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "kpiMacroCap"
+    },
+    "position": {
+     "x": 334,
+     "y": 198,
+     "width": 286,
+     "height": 18
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "\u2014",
+     "style": {
+      "backgroundColor": "#FFFFFF",
+      "color": "#0B1E3F",
+      "fontSize": 34,
+      "fontWeight": 700,
+      "borderRadius": 8,
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#D7DEE8",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center"
+     }
+    },
+    "propConfig": {
+     "props.text": {
+      "binding": {
+       "type": "query",
+       "config": {
+        "queryPath": "KpiWeightedF1",
+        "polling": {
+         "enabled": false
+        }
+       },
+       "transforms": [
+        {
+         "code": "\treturn value.getValueAt(0, 0)",
+         "type": "script"
+        }
+       ]
+      }
+     }
+    },
+    "meta": {
+     "name": "kpiWeightedVal"
+    },
+    "position": {
+     "x": 640,
+     "y": 110,
+     "width": 286,
+     "height": 84
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Weighted F1",
+     "style": {
+      "color": "#64748B",
+      "fontSize": 13,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "kpiWeightedCap"
+    },
+    "position": {
+     "x": 640,
+     "y": 198,
+     "width": 286,
+     "height": 18
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "\u2014",
+     "style": {
+      "backgroundColor": "#FFFFFF",
+      "color": "#0B1E3F",
+      "fontSize": 34,
+      "fontWeight": 700,
+      "borderRadius": 8,
+      "borderStyle": "solid",
+      "borderWidth": 1,
+      "borderColor": "#D7DEE8",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center"
+     }
+    },
+    "propConfig": {
+     "props.text": {
+      "binding": {
+       "type": "query",
+       "config": {
+        "queryPath": "KpiTotalChips",
+        "polling": {
+         "enabled": false
+        }
+       },
+       "transforms": [
+        {
+         "code": "\treturn value.getValueAt(0, 0)",
+         "type": "script"
+        }
+       ]
+      }
+     }
+    },
+    "meta": {
+     "name": "kpiChipsVal"
+    },
+    "position": {
+     "x": 946,
+     "y": 110,
+     "width": 286,
+     "height": 84
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Validation Chips",
+     "style": {
+      "color": "#64748B",
+      "fontSize": 13,
+      "fontWeight": 600,
+      "textAlign": "center"
+     }
+    },
+    "meta": {
+     "name": "kpiChipsCap"
+    },
+    "position": {
+     "x": 946,
+     "y": 198,
+     "width": 286,
+     "height": 18
+    }
+   },
+   {
+    "type": "ia.display.label",
+    "version": 0,
+    "props": {
+     "text": "Per-Class Performance",
+     "style": {
+      "color": "#0B1E3F",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "paddingLeft": 4
+     }
+    },
+    "meta": {
+     "name": "tableHeading"
+    },
+    "position": {
+     "x": 28,
+     "y": 244,
+     "width": 400,
+     "height": 24
+    }
+   },
+   {
+    "type": "ia.display.table",
+    "version": 0,
+    "props": {
+     "data": []
+    },
+    "propConfig": {
+     "props.data": {
+      "binding": {
+       "type": "query",
+       "config": {
+        "queryPath": "MetricClassReport",
+        "polling": {
+         "enabled": false
+        }
+       }
+      }
+     }
+    },
+    "meta": {
+     "name": "classReportTable"
+    },
+    "position": {
+     "x": 28,
+     "y": 274,
+     "width": 1100,
+     "height": 282
+    }
+   }
+  ]
+ }
+}

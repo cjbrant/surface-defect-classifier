@@ -1,0 +1,4 @@
+pandas
+numpy
+SQLAlchemy>=2.0
+PyMySQL
