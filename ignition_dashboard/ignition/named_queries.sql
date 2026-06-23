@@ -2,7 +2,7 @@
 -- In Ignition, value parameters are referenced as :paramName.
 -- This file is the source of truth; each query is mirrored as a named-query
 -- resource under projects/surface_defect/ignition/named-query/.
--- For standalone testing, replace :params with literals.
+
 
 -- ============================================================
 -- nqOverallMetrics(:modelName)  -> KPI tiles
