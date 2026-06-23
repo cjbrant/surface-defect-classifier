@@ -1,6 +1,5 @@
 -- Surface Defect Classifier — MySQL star schema
--- Loaded automatically on first container boot (mounted into /docker-entrypoint-initdb.d).
--- Convention: camelCase identifiers. Class-label VALUES (e.g. 'rolled-in_scale') stay verbatim.
+-- Loaded automatically on first container boot (mounted into /docker-entrypoint-initdb.d)
 
 CREATE DATABASE IF NOT EXISTS surfaceDefect
   CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
